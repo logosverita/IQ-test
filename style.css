@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  }
+  
+  .quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .question-progress {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .question-container {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .choices-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
+  
+  @media (max-width: 600px) {
+    .choices-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  

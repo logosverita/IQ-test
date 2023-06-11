@@ -812,17 +812,29 @@ class App extends React.Component {
     hasAccess: false,
   };
 
-  grantAccess = () => {
-    this.setState({ hasAccess: true });
-  };
-
-  render() {
-    const { hasAccess } = this.state;
-
-    if (!hasAccess) {
-      return <AccessCodeForm onAccessCodeValid={this.grantAccess} />;
+  // grantAccess = () => {
+  //   this.setState({ hasAccess: true });
+  // };
+  componentDidMount() {
+    const params = new URLSearchParams(window.location.search);
+    const prevAccessKey = params.get('prev_access_key');
+    if (prevAccessKey === '6pfqpit7sbsdeicx55t6vnj7v7hh89x3') {
+      this.setState({ hasAccess: true });
     }
-
+  }
+  render() {
+    if (!this.state.hasAccess) {
+      return (
+        <div style={{ padding: '1em', textAlign: 'center' }}>
+          <Typography variant="h5" gutterBottom>
+            アクセス制限について
+          </Typography>
+          <Typography variant="body1">
+          申し訳ありませんが、このサイトにはアクセスできません。アクセス権があると思われる場合は、提供されたURLをご確認ください。
+          </Typography>
+        </div>
+      );
+    }
     return <Quiz />;
   }
 }
